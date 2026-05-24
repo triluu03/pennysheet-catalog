@@ -1,0 +1,16 @@
+%% EventCatalog Mermaid Diagram
+%% Resource: events/TransactionCategorized (v0.0.1)
+%% Generated: 2026-05-24T10:44:54.942Z
+
+flowchart LR
+
+    %% Style definitions
+    classDef events fill:#f97316,stroke:#c2410c,color:#fff
+    classDef services fill:#ec4899,stroke:#be185d,color:#fff
+
+    %% Nodes
+    TransactionCategorized_0_0_1>"Transaction Categorized (0.0.1)"]:::events
+    CoreAggregate_0_0_1[["Core Aggregate (0.0.1)"]]:::services
+
+    %% Edges
+    CoreAggregate_0_0_1 -->|"publishes  event"| TransactionCategorized_0_0_1

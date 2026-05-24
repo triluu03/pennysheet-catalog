@@ -1,0 +1,16 @@
+%% EventCatalog Mermaid Diagram
+%% Resource: containers/DashboardView (v0.0.1)
+%% Generated: 2026-05-24T10:44:55.111Z
+
+flowchart LR
+
+    %% Style definitions
+    classDef services fill:#ec4899,stroke:#be185d,color:#fff
+    classDef data fill:#3b82f6,stroke:#1d4ed8,color:#fff
+
+    %% Nodes
+    CoreProjector_0_0_1[["Core Projector (0.0.1)"]]:::services
+    DashboardView_0_0_1[("Dashboard View")]:::data
+
+    %% Edges
+    CoreProjector_0_0_1 -->|"writes to"| DashboardView_0_0_1

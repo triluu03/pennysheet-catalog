@@ -1,0 +1,43 @@
+---
+id: TransactionTagged
+name: Transaction Tagged
+version: 0.0.1
+schemaPath: schema.json
+summary: Tags were applied to a transaction.
+---
+
+<NodeGraph />
+
+## Example payload
+
+```json title="Example Payload"
+{
+  "event_id": "123e4567-e89b-12d3-a456-426614174000",
+  "timestamp": "2024-07-04T14:48:00Z"
+}
+```
+
+## Schema (JSON)
+
+<SchemaViewer file="schema.json" search="true" expand="true" />
+
+
+ ## Raw Schema:schema.json
+
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the event"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the event"
+    }
+  },
+  "required": ["event_id", "timestamp"]
+}

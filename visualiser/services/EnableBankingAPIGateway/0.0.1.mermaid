@@ -1,0 +1,19 @@
+%% EventCatalog Mermaid Diagram
+%% Resource: services/EnableBankingAPIGateway (v0.0.1)
+%% Generated: 2026-05-24T10:44:55.013Z
+
+flowchart LR
+
+    %% Style definitions
+    classDef events fill:#f97316,stroke:#c2410c,color:#fff
+    classDef services fill:#ec4899,stroke:#be185d,color:#fff
+
+    %% Nodes
+    ImportTransactionsRequested_0_0_1>"Import Transactions Requested (0.0.1)"]:::events
+    EnableBankingAPIGateway_0_0_1[["Enable Banking API Gateway (0.0.1)"]]:::services
+    CoreAggregate_0_0_1[["Core Aggregate (0.0.1)"]]:::services
+    EnableBankingAPIGateway_0_0_1[["Enable Banking API Gateway (0.0.1)"]]:::services
+
+    %% Edges
+    CoreAggregate_0_0_1 -->|"publishes  event"| ImportTransactionsRequested_0_0_1
+    ImportTransactionsRequested_0_0_1 -->|"subscribed by"| EnableBankingAPIGateway_0_0_1

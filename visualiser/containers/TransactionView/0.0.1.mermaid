@@ -1,0 +1,16 @@
+%% EventCatalog Mermaid Diagram
+%% Resource: containers/TransactionView (v0.0.1)
+%% Generated: 2026-05-24T10:44:55.113Z
+
+flowchart LR
+
+    %% Style definitions
+    classDef services fill:#ec4899,stroke:#be185d,color:#fff
+    classDef data fill:#3b82f6,stroke:#1d4ed8,color:#fff
+
+    %% Nodes
+    CoreProjector_0_0_1[["Core Projector (0.0.1)"]]:::services
+    TransactionView_0_0_1[("Transaction View")]:::data
+
+    %% Edges
+    CoreProjector_0_0_1 -->|"writes to"| TransactionView_0_0_1

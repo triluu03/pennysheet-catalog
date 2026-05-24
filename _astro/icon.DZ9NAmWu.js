@@ -1,0 +1,1 @@
+import{b as r}from"./url-builder.CAft-8Mr.js";function i(t){return t?t.startsWith("/")||t.startsWith("http://")||t.startsWith("https://"):!1}function h(t){return t.startsWith("http://")||t.startsWith("https://")?t:r(t,!0)}export{i,h as r};

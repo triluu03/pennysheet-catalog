@@ -1,0 +1,16 @@
+%% EventCatalog Mermaid Diagram
+%% Resource: events/TransactionImportCompleted (v0.0.1)
+%% Generated: 2026-05-24T10:44:54.944Z
+
+flowchart LR
+
+    %% Style definitions
+    classDef events fill:#f97316,stroke:#c2410c,color:#fff
+    classDef services fill:#ec4899,stroke:#be185d,color:#fff
+
+    %% Nodes
+    TransactionImportCompleted_0_0_1>"Transaction Import Completed (0.0.1)"]:::events
+    CoreEventInjector_0_0_1[["Core Event Injector (0.0.1)"]]:::services
+
+    %% Edges
+    CoreEventInjector_0_0_1 -->|"publishes  event"| TransactionImportCompleted_0_0_1

@@ -1,0 +1,35 @@
+%% EventCatalog Mermaid Diagram
+%% Resource: flows/TransactionImportFlow (v0.0.1)
+%% Generated: 2026-05-24T10:44:55.104Z
+
+flowchart LR
+
+    %% Style definitions
+    classDef actor fill:#eab308,stroke:#a16207,color:#000
+    classDef commands fill:#3b82f6,stroke:#1d4ed8,color:#fff
+    classDef services fill:#ec4899,stroke:#be185d,color:#fff
+    classDef events fill:#f97316,stroke:#c2410c,color:#fff
+    classDef externalSystem fill:#ec4899,stroke:#be185d,color:#fff
+
+    %% Nodes
+    step_user(("User")):::actor
+    step_import_cmd>"Import Transactions (0.0.1)"]:::commands
+    step_core_aggregate[["Core Aggregate (0.0.1)"]]:::services
+    step_import_requested>"Import Transactions Requested (0.0.1)"]:::events
+    step_enable_banking_gateway[["Enable Banking API Gateway (0.0.1)"]]:::services
+    step_enable_banking_api[["Enable Banking API"]]:::externalSystem
+    step_enable_banking_gateway_response[["Enable Banking API Gateway (0.0.1)"]]:::services
+    step_core_event_injector[["Core Event Injector (0.0.1)"]]:::services
+    step_import_completed>"Transaction Import Completed (0.0.1)"]:::events
+    step_import_failed>"Transaction Import Failed (0.0.1)"]:::events
+
+    %% Edges
+    step_user -->|"via client-side application"| step_import_cmd
+    step_import_cmd -->|"handled by aggregate"| step_core_aggregate
+    step_core_aggregate -->|"emits events"| step_import_requested
+    step_import_requested -->|"received by API Gateway"| step_enable_banking_gateway
+    step_enable_banking_gateway -->|"fetches transactions"| step_enable_banking_api
+    step_enable_banking_api -->|"returns transactions or error response"| step_enable_banking_gateway_response
+    step_enable_banking_gateway_response -->|"call event injector"| step_core_event_injector
+    step_core_event_injector -->|"Import succeeded"| step_import_completed
+    step_core_event_injector -->|"Import failed"| step_import_failed

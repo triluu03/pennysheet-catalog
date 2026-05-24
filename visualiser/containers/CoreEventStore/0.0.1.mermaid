@@ -1,0 +1,20 @@
+%% EventCatalog Mermaid Diagram
+%% Resource: containers/CoreEventStore (v0.0.1)
+%% Generated: 2026-05-24T10:44:55.109Z
+
+flowchart LR
+
+    %% Style definitions
+    classDef services fill:#ec4899,stroke:#be185d,color:#fff
+    classDef data fill:#3b82f6,stroke:#1d4ed8,color:#fff
+
+    %% Nodes
+    CoreAggregate_0_0_1[["Core Aggregate (0.0.1)"]]:::services
+    CoreEventInjector_0_0_1[["Core Event Injector (0.0.1)"]]:::services
+    CoreEventStore_0_0_1[("Core Event Store")]:::data
+    CoreProjector_0_0_1[["Core Projector (0.0.1)"]]:::services
+
+    %% Edges
+    CoreAggregate_0_0_1 -->|"writes to"| CoreEventStore_0_0_1
+    CoreEventInjector_0_0_1 -->|"writes to"| CoreEventStore_0_0_1
+    CoreEventStore_0_0_1 -->|"reads from   (postgres)"| CoreProjector_0_0_1

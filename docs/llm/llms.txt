@@ -1,0 +1,54 @@
+# Pennysheet EventCatalog Documentation
+
+> This internal platform provides a comprehensive view of our event-driven architecture across all systems. Use this portal to discover existing domains, explore services and their dependencies, and understand the message contracts that connect our infrastructure
+
+## Events
+- [Budget Created - BudgetCreated - 0.0.1 ](https://eventcatalog.dev/docs/events/BudgetCreated/0.0.1.mdx) - A new budget was created.- [Budget Deleted - BudgetDeleted - 0.0.1 ](https://eventcatalog.dev/docs/events/BudgetDeleted/0.0.1.mdx) - A budget was deleted.- [Budget Exceeded - BudgetExceeded - 0.0.1 ](https://eventcatalog.dev/docs/events/BudgetExceeded/0.0.1.mdx) - Spending exceeded the budget limit.- [Budget Reached - BudgetReached - 0.0.1 ](https://eventcatalog.dev/docs/events/BudgetReached/0.0.1.mdx) - Spending reached the budget's alert threshold.- [Budget Updated - BudgetUpdated - 0.0.1 ](https://eventcatalog.dev/docs/events/BudgetUpdated/0.0.1.mdx) - A budget's settings were changed.- [Import Transactions Requested - ImportTransactionsRequested - 0.0.1 ](https://eventcatalog.dev/docs/events/ImportTransactionsRequested/0.0.1.mdx) - User requested a transaction import.- [Transaction Categorized - TransactionCategorized - 0.0.1 ](https://eventcatalog.dev/docs/events/TransactionCategorized/0.0.1.mdx) - A transaction's category was set or changed.- [Transaction Import Completed - TransactionImportCompleted - 0.0.1 ](https://eventcatalog.dev/docs/events/TransactionImportCompleted/0.0.1.mdx) - Transaction import finished successfully.- [Transaction Import Failed - TransactionImportFailed - 0.0.1 ](https://eventcatalog.dev/docs/events/TransactionImportFailed/0.0.1.mdx) - Transaction import failed with an error.- [Transaction Note Updated - TransactionNoteUpdated - 0.0.1 ](https://eventcatalog.dev/docs/events/TransactionNoteUpdated/0.0.1.mdx) - A transaction's note was created or updated.- [Transaction Recorded - TransactionRecorded - 0.0.1 ](https://eventcatalog.dev/docs/events/TransactionRecorded/0.0.1.mdx) - A new transaction was recorded.- [Transaction Tagged - TransactionTagged - 0.0.1 ](https://eventcatalog.dev/docs/events/TransactionTagged/0.0.1.mdx) - Tags were applied to a transaction.
+
+## Commands
+- [Categorize Transaction - CategorizeTransaction - 0.0.1 ](https://eventcatalog.dev/docs/commands/CategorizeTransaction/0.0.1.mdx) - Assign or update a transaction's category.- [Create Budget - CreateBudget - 0.0.1 ](https://eventcatalog.dev/docs/commands/CreateBudget/0.0.1.mdx) - Create a new spending budget.- [Delete Budget - DeleteBudget - 0.0.1 ](https://eventcatalog.dev/docs/commands/DeleteBudget/0.0.1.mdx) - Permanently remove a budget.- [Import Transactions - ImportTransactions - 0.0.1 ](https://eventcatalog.dev/docs/commands/ImportTransactions/0.0.1.mdx) - Initiate a transaction import from Enable Banking.- [Record Transaction - RecordTransaction - 0.0.1 ](https://eventcatalog.dev/docs/commands/RecordTransaction/0.0.1.mdx) - Record a new financial transaction.- [Tag Transaction - TagTransaction - 0.0.1 ](https://eventcatalog.dev/docs/commands/TagTransaction/0.0.1.mdx) - Apply tags to a transaction.- [Update Budget - UpdateBudget - 0.0.1 ](https://eventcatalog.dev/docs/commands/UpdateBudget/0.0.1.mdx) - Modify an existing budget.- [Update Transaction Note - UpdateTransactionNote - 0.0.1 ](https://eventcatalog.dev/docs/commands/UpdateTransactionNote/0.0.1.mdx) - Set or update a transaction's note.
+
+## Queries
+
+
+## Services
+- [Core Aggregate - CoreAggregate - 0.0.1 ](https://eventcatalog.dev/docs/services/CoreAggregate/0.0.1.mdx) - Write-side aggregate handling finance commands and emitting events.- [Core Event Injector - CoreEventInjector - 0.0.1 ](https://eventcatalog.dev/docs/services/CoreEventInjector/0.0.1.mdx) - Writes transactions import outcome events to the event store.- [Core Notifier - CoreNotifier - 0.0.1 ](https://eventcatalog.dev/docs/services/CoreNotifier/0.0.1.mdx) - Sends notifications to the clients/users- [Core Projector - CoreProjector - 0.0.1 ](https://eventcatalog.dev/docs/services/CoreProjector/0.0.1.mdx) - Builds read models from the event store.- [Enable Banking API Gateway - EnableBankingAPIGateway - 0.0.1 ](https://eventcatalog.dev/docs/services/EnableBankingAPIGateway/0.0.1.mdx) - Fetches transactions from Enable Banking and calls CoreEventInjector with the outcome.
+
+## Data Products
+
+
+## Domains
+- [Core Domain - Core - 0.0.1 ](https://eventcatalog.dev/docs/domains/Core/0.0.1.mdx) - Manages personal finance transactions and budgets using event sourcing.
+
+## Flows
+- [Transaction Import Flow - TransactionImportFlow - 0.0.1 ](https://eventcatalog.dev/docs/flows/TransactionImportFlow/0.0.1.mdx) - Import transactions from Enable Banking — request to completion or failure.
+
+## Channels
+
+## Ubiquitous Language
+- Core Domain Domain
+    - [Aggregate: - Write-side component that handles commands and emits events for the Transaction and Budget aggregate roots.](https://eventcatalog.dev/docs/domains/Core/language.mdx)
+    - [Transaction: - A single financial movement — income or expense — recorded by the user.](https://eventcatalog.dev/docs/domains/Core/language.mdx)
+    - [Budget: - A user-defined spending limit for a category over a time period.](https://eventcatalog.dev/docs/domains/Core/language.mdx)
+    - [Event Store: - Append-only log that persists all domain events — the source of truth for the Core domain.](https://eventcatalog.dev/docs/domains/Core/language.mdx)
+    - [Event Injector: - Service that writes events directly to the event store, bypassing the command pipeline — used for transaction imports.](https://eventcatalog.dev/docs/domains/Core/language.mdx)
+    - [Projector: - Read-side component that consumes events and maintains denormalised query-optimised views.](https://eventcatalog.dev/docs/domains/Core/language.mdx)
+    - [Notifier: - Reactive service that dispatches user notifications when budget thresholds are reached or exceeded.](https://eventcatalog.dev/docs/domains/Core/language.mdx)
+    - [Transaction View: - Read model table providing a per-transaction projection for list and search queries.](https://eventcatalog.dev/docs/domains/Core/language.mdx)
+    - [Budget View: - Read model table tracking spending progress and threshold status per budget.](https://eventcatalog.dev/docs/domains/Core/language.mdx)
+    - [Dashboard View: - Read model table providing an aggregated financial summary for dashboard rendering.](https://eventcatalog.dev/docs/domains/Core/language.mdx)
+    - [Transaction Import: - The process of ingesting transactions from an external source such as a bank CSV export via Enable Banking.](https://eventcatalog.dev/docs/domains/Core/language.mdx)
+
+## Containers (Databases, External Systems)
+- [Budget View - BudgetView - 0.0.1 ](https://eventcatalog.dev/docs/containers/BudgetView/0.0.1.mdx) - Per-budget read model tracking spending progress.
+- [Core Event Store - CoreEventStore - 0.0.1 ](https://eventcatalog.dev/docs/containers/CoreEventStore/0.0.1.mdx) - Append-only event table for all Core domain events.
+- [Dashboard View - DashboardView - 0.0.1 ](https://eventcatalog.dev/docs/containers/DashboardView/0.0.1.mdx) - Aggregated financial summary for the dashboard.
+- [Transaction View - TransactionView - 0.0.1 ](https://eventcatalog.dev/docs/containers/TransactionView/0.0.1.mdx) - Per-transaction read model for list and search.
+
+## Entities
+
+
+## Teams
+
+
+## Users

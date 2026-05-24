@@ -1,0 +1,22 @@
+%% EventCatalog Mermaid Diagram
+%% Resource: services/CoreProjector (v0.0.1)
+%% Generated: 2026-05-24T10:44:55.009Z
+
+flowchart LR
+
+    %% Style definitions
+    classDef services fill:#ec4899,stroke:#be185d,color:#fff
+    classDef data fill:#3b82f6,stroke:#1d4ed8,color:#fff
+
+    %% Nodes
+    CoreProjector_0_0_1[["Core Projector (0.0.1)"]]:::services
+    TransactionView_0_0_1[("Transaction View")]:::data
+    BudgetView_0_0_1[("Budget View")]:::data
+    DashboardView_0_0_1[("Dashboard View")]:::data
+    CoreEventStore_0_0_1[("Core Event Store")]:::data
+
+    %% Edges
+    CoreProjector_0_0_1 -->|"writes to   (postgres)"| TransactionView_0_0_1
+    CoreProjector_0_0_1 -->|"writes to   (postgres)"| BudgetView_0_0_1
+    CoreProjector_0_0_1 -->|"writes to   (postgres)"| DashboardView_0_0_1
+    CoreEventStore_0_0_1 -->|"reads from   (postgres)"| CoreProjector_0_0_1

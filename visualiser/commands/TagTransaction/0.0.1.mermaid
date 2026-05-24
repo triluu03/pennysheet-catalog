@@ -1,0 +1,16 @@
+%% EventCatalog Mermaid Diagram
+%% Resource: commands/TagTransaction (v0.0.1)
+%% Generated: 2026-05-24T10:44:54.977Z
+
+flowchart LR
+
+    %% Style definitions
+    classDef commands fill:#3b82f6,stroke:#1d4ed8,color:#fff
+    classDef services fill:#ec4899,stroke:#be185d,color:#fff
+
+    %% Nodes
+    TagTransaction_0_0_1>"Tag Transaction (0.0.1)"]:::commands
+    CoreAggregate_0_0_1[["Core Aggregate (0.0.1)"]]:::services
+
+    %% Edges
+    TagTransaction_0_0_1 -->|"accepts"| CoreAggregate_0_0_1
